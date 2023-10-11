@@ -2,16 +2,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Register {
-    
-    private Scanner scanner = new Scanner(System.in);
-    ArrayList<Dog> listOfDogs = new ArrayList<>();
+        ArrayList<Dog> listOfDogs = new ArrayList<>();
 
     public void addDog() {
 
+        Scanner scanner = new Scanner(System.in);
+
         System.out.println("Register a new dog");
         System.out.println("What is the name of the dog?");
-        
-        String name = scanner.nextLine();
+
+         String name = scanner.nextLine();
          System.out.println("What is the race of the dog?");
         String race = scanner.nextLine();
          System.out.println("What is the age of the dog?");
@@ -31,39 +31,32 @@ public class Register {
     }
 
     public void deleteDog() {
-   
-
+        Scanner scanner = new Scanner(System.in);
+        boolean dogDeleted = false;
+        String enterName;
         System.out.println("Enter the name of the dog you want to delete from the register");
 
-        String enterName = scanner.nextLine();
+        enterName = scanner.next();
+      
         
-        
-
-              for (int i = 0; i < listOfDogs.size(); i++) {
+        for (int i = 0; i < listOfDogs.size(); i++) {
            
+         if (enterName.equalsIgnoreCase(listOfDogs.get(i).getName())) {
 
-
-
-            if (enterName.equalsIgnoreCase(listOfDogs.get(i).getName())) {
-       
                 listOfDogs.remove(i);
                 System.out.println("Dog deleted");
+                dogDeleted = true;
+                break;
 
             }
-            else {
-                System.out.println("Dog doesnt exist");
-            }
-            
-            }
-       
-        
-
-   
-
            
+            }
+                 if (!dogDeleted) {
+                System.out.println("Dog doesnt exist");
 
         }
 
     }
 
+}
 
